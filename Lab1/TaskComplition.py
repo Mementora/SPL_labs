@@ -113,7 +113,6 @@ def show_archived_expressions():
         print(savedExpressions)
     main_menu()
 
-
 # Task 10: user customization
 def show_settings():
     global decimalNumber
