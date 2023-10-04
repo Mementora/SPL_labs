@@ -1,9 +1,6 @@
-from Solutions import *
+from Solutions import Calculator
+
 
 if __name__ == '__main__':
-    p1 = Calculator(4,5,'+')
-
-    print(p1.operator)
-    print(p1.firstNumber)
-    print(p1.secondNumber)
-
+    calc = Calculator()
+    calc.user_interface()
