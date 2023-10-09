@@ -27,11 +27,11 @@ class Calculator:
         elif self.operator == '/':
             return self.divide()
         elif self.operator == 'sqrt':
-            self.square_root()
+            return self.square_root()
         elif self.operator == '^':
-            self.power()
+            return self.power()
         elif self.operator == '%':
-            self.leftover()
+            return self.leftover()
         else:
             return "Invalid operator"
 
@@ -42,11 +42,11 @@ class Calculator:
             return "can't divide by zero"
 
     def add(self):
-        result = self.first_input + self.second_input
+        result = float(self.first_input + self.second_input)
         return result
 
     def subtract(self):
-        result = self.first_input - self.second_input
+        result = float(self.first_input - self.second_input)
         return result
 
     def divide(self):
@@ -54,15 +54,15 @@ class Calculator:
         return result
 
     def multiply(self):
-        result = self.first_input * self.second_input
+        result = float(self.first_input * self.second_input)
         return result
 
     def square_root(self):
-        result = sqrt(self.first_input)
+        result = float(sqrt(self.first_input))
         return result
 
     def power(self):
-        result = pow(self.first_input, self.second_input)
+        result = float(pow(self.first_input, self.second_input))
         return result
 
     def leftover(self):
