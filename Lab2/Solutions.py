@@ -28,10 +28,11 @@ class Calculator:
             return self.divide()
         elif self.operator == 'sqrt':
             return self.square_root()
+
         elif self.operator == '^':
             return self.power()
         elif self.operator == '%':
-            return self.leftover()
+            return self.remainder()
         else:
             return "Invalid operator"
 
@@ -65,7 +66,7 @@ class Calculator:
         result = float(pow(self.first_input, self.second_input))
         return result
 
-    def leftover(self):
+    def remainder(self):
         result = self.first_input % self.second_input
         return result
 

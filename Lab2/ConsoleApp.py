@@ -1,6 +1,5 @@
 
-#issue: func doing job twice
-class Console_calculator:
+class ConsoleCalculator:
     def __init__(self, calculator):
         self.calculator = calculator
 
@@ -8,12 +7,13 @@ class Console_calculator:
         self.user_interface()
 
     def user_interface(self):
+        print("Warning: if you want to use square root funtion it will return only the first number you "
+              "entered")
         while True:
             print("press 1 to calculate")
             print("press q to exit")
             user_choice = input()
             if user_choice == '1':
-                user_choice == ''
                 result = self.calculator.perform_calculation()
                 print(f"result: {result}")
                 print("repeat calculation? (y or n): ")
