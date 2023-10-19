@@ -1,65 +1,105 @@
-from pyfiglet import Figlet
+import pyfiglet
 from colorama import Fore, Style
 
-
 class ConsoleApp:
+    def __init__(self):
+        self.fonts = ['standard', 'banner', 'slant', 'script']
+        self.colors = [Fore.LIGHTRED_EX, Fore.LIGHTBLUE_EX, Fore.LIGHTGREEN_EX]
 
-    def __init__(self, ascii):
-        self.ascii = ascii
-        self.choosed_color = Fore.RESET
-        self.current_font = 'standard'
+    def get_user_input(self):
 
-    def run(self):
-        self.user_interface()
+        user_input = input(Fore.LIGHTYELLOW_EX + "Enter a word or phrase to convert to ASCII art: ")
 
-    def user_interface(self):
+        self.show_available_fonts()
+        font_choice = self.get_font_choice()
+
+        self.show_available_colors()
+        color_choice = self.get_color_choice()
+
+        width = self.get_positive_number("Enter the width of the ASCII art (number of characters in a line): ")
+        height = self.get_positive_number("Enter the height of the ASCII art (number of lines): ")
+
+        use_custom_chars = input("Do you want to choose a special character to create ASCII art? (y/n): ").strip().lower()
+        char_set = self.get_custom_characters() if use_custom_chars == 'y' else None
+
+        preview_enabled = input("Want to preview your ASCII art before saving? (y/n): ").strip().lower()
+
+        return user_input, self.fonts[font_choice - 1], self.colors[color_choice - 1], width, height, char_set, preview_enabled
+
+    def show_available_fonts(self):
+        print("Available font styles:")
+        for i, font in enumerate(self.fonts, start=1):
+            print(f"{i}. {font}")
+
+    def get_font_choice(self):
         while True:
-                text = input(Fore.RESET + "enter text: ")
-                font = self.set_ascii_font()
-                color = self.set_ascii_color()
-                self.ascii.perform_ascii_covnentor(text, font, color)
-
-    # set font for generated ascii art
-    def set_ascii_font(self):
-        available_fonts = ["standard", "banner", "slant", "starwars"]
-
-        while True:
-            print("Available font styles:")
-            for i, font in enumerate(available_fonts, start=1):
-                print(f"{i}. {font}")
-
             try:
-                font_choice = int(input("Choose a font number (1-4): "))
-
-                if 1 <= font_choice <= len(available_fonts):
-                    selected_font = available_fonts[font_choice - 1]
-                    return selected_font
+                font_choice = int(input("Choose a font style number (1-4): "))
+                if 1 <= font_choice <= 4:
+                    return font_choice
                 else:
-                    print("Please enter a correct number (1-4)")
+                    print("Please enter a number between 1 and 4.")
             except ValueError:
-                print("Please enter a font number (1-4)")
+                print("Please enter the correct font style number.")
 
-    # set color for generated ascii art
-    def set_ascii_color(self):
-        print(
-            "Available text colors:\n" +
-            Fore.LIGHTRED_EX + "1. Red\n"
-            + Fore.LIGHTBLUE_EX + "2. Blue\n" +
-            Fore.LIGHTGREEN_EX + "3. Green")
+    def show_available_colors(self):
+        print("Available text colors:")
+        for i, color in enumerate(self.colors, start=1):
+            print(f"{i}. Color {i}")
 
+    def get_color_choice(self):
         while True:
             try:
-                color_choice = int(input(Fore.RESET + "choose from available options[1-3]"))
+                color_choice = int(input("Choose a text color number (1-3): "))
                 if 1 <= color_choice <= 3:
-                    break
+                    return color_choice
                 else:
-                    print("invalid number, try again [1-3]")
+                    print("Please enter a number between 1 and 3.")
             except ValueError:
-                print("Enter correct color number [1-3]")
+                print("Please enter the correct text color number.")
 
-    def use_custom_char(self):
-        custom_char = input("Do you want to choose a specific chracter to generate ASCII art? (y or n)")
-        if custom_char == 'y':
-            char_set = input("Enter the characters you want to use for ASCII art: ")
-        else:
-            char_set = None
+    def get_positive_number(self, prompt):
+        while True:
+            try:
+                number = int(input(prompt))
+                if number > 0:
+                    return number
+                else:
+                    print("Please enter a number greater than zero.")
+            except ValueError:
+                print("Please enter the correct number.")
+
+    def get_custom_characters(self):
+        return input("Enter the characters you want to use for ASCII art (e.g., '@#*'): ")
+
+    def preview_ascii_art(self, ascii_text, selected_color):
+        print(selected_color + ascii_text + Style.RESET_ALL)
+
+    def generate_ascii_art(self, text, selected_font, selected_color, width, height, char_set=None):
+        ascii_art = pyfiglet.Figlet(font=selected_font)
+        ascii_text = ascii_art.renderText(text)
+        ascii_lines = ascii_text.split('\n')
+
+        scaled_ascii_lines = []
+        char_set_length = len(char_set) if char_set else 0
+        for line in ascii_lines:
+            scaled_line = ""
+            for char in line:
+                if char == ' ':
+                    scaled_line += ' '
+                else:
+                    if char_set:
+                        scaled_line += char_set[hash(char) % char_set_length]
+                    else:
+                        scaled_line += char
+            scaled_ascii_lines.append(scaled_line.center(width)[:width])
+
+        scaled_ascii_text = '\n'.join(scaled_ascii_lines[:height])
+
+        colored_text = selected_color + scaled_ascii_text + Style.RESET_ALL
+        return colored_text
+
+    def save_ascii_art(self, ascii_text, file_name):
+        with open(f"{file_name}.txt", "w") as file:
+            file.write(ascii_text)
+        print(f"ASCII art is saved in a file {file_name}.txt")
