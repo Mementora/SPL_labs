@@ -1,5 +1,4 @@
 from colorama import Fore, Style
-import ascii_art_generator
 class ConsoleApp:
     def __init__(self):
 
