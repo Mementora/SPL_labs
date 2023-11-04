@@ -1,16 +1,14 @@
-# This is a sample Python script.
+import ConsoleApp
 
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
+if __name__ == "__main__":
+    app = ConsoleApp.ConsoleApp()
+    user_input, selected_font, selected_color, width, height, char_set, preview_enabled = app.get_user_input()
+    ascii_text = app.generate_ascii_art(user_input, selected_font, selected_color, width, height, char_set)
 
+    if preview_enabled == 'y':
+        app.preview_ascii_art(ascii_text, selected_color)
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    save_confirmation = input("Save ASCII art to a file? (y/n): ").strip().lower()
+    if save_confirmation == 'y':
+        file_name = input("Enter a file name to save the ASCII art (without extension): ")
+        app.save_ascii_art(ascii_text, file_name)
