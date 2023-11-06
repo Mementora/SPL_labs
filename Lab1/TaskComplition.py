@@ -5,64 +5,86 @@ archiveExpression = []
 decimalNumber = 2
 
 def main_menu():
-    print("Welcome! if you want to use calculator press 1")
-    print("if you want to see archived expressions press 2")
-    print("if you want to customize this app, press 3: ")
+    print("Welcome! if you want to use the calculator, press 1")
+    print("If you want to see archived expressions, press 2")
+    print("If you want to customize this app, press 3: ")
     userInput = input()
     if userInput == '1':
-        arithmetic_calculator()
+        user_input()
     elif userInput == '2':
         show_archived_expressions()
     elif userInput == '3':
         show_settings()
 
-
 # Task 1: User input
 # Task 3: Calculation
 # Task 6: Decimal number
 # Task 7: additional operations
-def arithmetic_calculator():
+
+def user_input():
     firstInput = float(input("Enter the first number: "))
     secondInput = float(input("Enter the second number: "))
     operator = input("Enter the operator symbol: ")
-    result = 0
-
     error_handler(firstInput, secondInput, operator)
     check_correct_operator(operator)
+    start_calculation(firstInput, secondInput, operator)
 
+def start_calculation(num1, num2, operator):
+    result = 0
     if operator == '+':
-        result = firstInput + secondInput
+        result = add(num1, num2)
     elif operator == '-':
-        result = firstInput - secondInput
+        result = subtract(num1, num2)
     elif operator == '*':
-        result = firstInput * secondInput
+        result = multiply(num1, num2)
     elif operator == '/':
-        result = firstInput / secondInput
+        if num2 == 0:
+            print("Error: Can't divide by zero")
+            recursive_calculation()
+            return
+        result = divide(num1, num2)
     elif operator == '^':
-        result = pow(firstInput, secondInput)
+        result = pow(num1, num2)
     elif operator == 'sqrt':
-        userChoice = int(input("this operator requires only one number. Press 1 or 2 for needed number"))
+        userChoice = int(input("This operator requires only one number. Press 1 or 2 for the needed number: "))
         if userChoice == 1:
-            result = sqrt(firstInput)
-            print(result)
+            result = square_root(num1)
         elif userChoice == 2:
-            result = sqrt(secondInput)
-            print(result)
+            result = square_root(num2)
         else:
             print("Wrong answer. You can only choose number one or two")
-        recursive_calculation()
+            recursive_calculation()
+            return
     elif operator == '%':
-        result = firstInput % secondInput
-
-    print(f"{firstInput} {operator} {secondInput} = {result}")
-
-    if decimalNumber == 0:
-        result = round(result, decimalNumber)
+        result = remainder(num1, num2)
     else:
-        result = int(round(result))
-    print(result)
-    archive_expression(firstInput, operator, secondInput, result)
-    recursive_calculation()
+        print("Invalid operator entered, please try again")
+        recursive_calculation()
+        return
+
+    print(f"{num1} {operator} {num2} = {result}")
+    archive_expression(num1, operator, num2, result)
+
+def add(num1, num2):
+    return float(num1 + num2)
+
+def subtract(num1, num2):
+    return float(num1 - num2)
+
+def divide(num1, num2):
+    return num1 / num2
+
+def multiply(num1, num2):
+    return float(num1 * num2)
+
+def square_root(num1, num2):
+    return float(sqrt(num1))
+
+def power(num1, num2):
+    return float(pow(num1, num2))
+
+def remainder(num1, num2):
+    return num1 % num2
 
 
 # Task 2: Operator verification
@@ -70,15 +92,14 @@ def check_correct_operator(o):
     operators = ['+', '-', '*', '/', '^', 'sqrt', '%']
     if o not in operators:
         print("Invalid operator entered, please try again")
-        arithmetic_calculator()
+        user_input()
 
 
 # Task 4:Repetition of calculations
 def recursive_calculation():
     answer = input("Repeat the calculation? (y or n)")
     if answer == 'y':
-        arithmetic_calculator()
-        recursive_calculation()
+        user_input()
     elif answer == 'n':
         main_menu()
     else:
@@ -108,7 +129,7 @@ def archive_expression(firstNumber, operator, secondNumber, result):
 def show_archived_expressions():
     if len(archiveExpression) == 0:
         print("Archive is empty!")
-        arithmetic_calculator()
+        main_menu()
     for savedExpressions in archiveExpression:
         print(savedExpressions)
     main_menu()
@@ -128,4 +149,4 @@ def show_settings():
             print("Incorrect number! Enter valid")
         else:
             print("заокруглення пройшло успішно")
-            arithmetic_calculator()
+            main_menu()
