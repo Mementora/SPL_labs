@@ -1,6 +1,5 @@
 from math import sqrt
 
-
 class Calculator:
     def __init__(self):
         self.first_input = None
@@ -11,64 +10,60 @@ class Calculator:
         self.first_input = float(input("enter the first number: "))
         self.second_input = float(input("enter the second number: "))
         self.operator = input("enter operator (+,-,*,/,sqrt,^,%): ")
-        self.start_calculation()
-
-    def perform_calculation(self):
-        self.user_input()
-        return self.start_calculation()
-
-    def start_calculation(self):
-        if self.operator == '+':
-            return self.add()
-        elif self.operator == '-':
-            return self.subtract()
-        elif self.operator == '*':
-            return self.multiply()
-        elif self.operator == '/':
-            return self.divide()
-        elif self.operator == 'sqrt':
-            return self.square_root()
-
-        elif self.operator == '^':
-            return self.power()
-        elif self.operator == '%':
-            return self.remainder()
-        else:
-            return "Invalid operator"
+        self.check_input()
+        result = self.start_calculation()
+        print("Result:", result)
 
     def check_input(self):
         if self.first_input == '' or self.second_input == '':
             return "Empty input"
         if (self.first_input == 0 or self.second_input == 0) and self.operator == '/':
-            return "can't divide by zero"
+            return "Can't divide by zero"
 
-    def add(self):
-        result = float(self.first_input + self.second_input)
-        return result
+    def start_calculation(self):
+        if self.operator == '+':
+            return self.add(self.first_input, self.second_input)
+        elif self.operator == '-':
+            return self.subtract(self.first_input, self.second_input)
+        elif self.operator == '*':
+            return self.multiply(self.first_input, self.second_input)
+        elif self.operator == '/':
+            return self.divide(self.first_input, self.second_input)
+        elif self.operator == 'sqrt':
+            return self.square_root(self.first_input)
+        elif self.operator == '^':
+            return self.power(self.first_input, self.second_input)
+        elif self.operator == '%':
+            return self.remainder(self.first_input, self.second_input)
+        else:
+            return "Invalid operator"
 
-    def subtract(self):
-        result = float(self.first_input - self.second_input)
-        return result
+    def add(self, num1, num2):
+        return num1 + num2
 
-    def divide(self):
-        result = self.first_input / self.second_input
-        return result
+    def subtract(self, num1, num2):
+        return num1 - num2
 
-    def multiply(self):
-        result = float(self.first_input * self.second_input)
-        return result
+    def divide(self, num1, num2):
+        if num1 == 0 or num2 == 0:
+            return "Can't divide by zero"
+        return num1 / num2
 
-    def square_root(self):
-        result = float(sqrt(self.first_input))
-        return result
+    def multiply(self, num1, num2):
+        return num1 * num2
 
-    def power(self):
-        result = float(pow(self.first_input, self.second_input))
-        return result
+    def square_root(self, num1):
+        if num1 < 0:
+            return "Cannot take the square root of a negative number"
+        return sqrt(num1)
 
-    def remainder(self):
-        result = self.first_input % self.second_input
-        return result
+    def power(self, num1, num2):
+        return num1 ** num2
+
+    def remainder(self, num1, num2):
+        if num2 == 0:
+            return "Can't find the remainder when dividing by zero"
+        return num1 % num2
 
     def repeat_calculation(self):
         self.user_input()
