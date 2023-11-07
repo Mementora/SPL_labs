@@ -25,9 +25,9 @@ def create_2d(x, y):
     return lst_1
 
 
-x = 50
-y = 60
-z = 90
+x = 10
+y = 20
+z = 25
 
 
 def create_start_line(length, size_z):
@@ -95,5 +95,5 @@ def build_3d(size_x, size_y, size_z):
 for i in build_3d(x, y, z):
     print(i)
 
-# for i in create_2d(x, y):
-#     print(i)
+#for i in create_2d(x, y):
+#    print(i)

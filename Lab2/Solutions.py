@@ -7,12 +7,23 @@ class Calculator:
         self.operator = None
 
     def user_input(self):
-        self.first_input = float(input("enter the first number: "))
-        self.second_input = float(input("enter the second number: "))
-        self.operator = input("enter operator (+,-,*,/,sqrt,^,%): ")
-        self.check_input()
+        self.first_input = self.safe_input(input("Enter the first number: "))
+        self.second_input = self.safe_input(input("Enter the second number: "))
+        self.operator = self.safe_input(input("enter operator (+,-,*,/,sqrt,^,%): "))
         result = self.start_calculation()
         print("Result:", result)
+
+    def perform_calculation(self):
+        self.user_input()
+        return self.start_calculation()
+
+    def safe_input(self, input_value):
+        if input_value.strip() == '':
+            print("Error: Empty input")
+            return "Please enter a valid number: "
+        return float(input_value)
+
+
 
     def check_input(self):
         if self.first_input == '' or self.second_input == '':

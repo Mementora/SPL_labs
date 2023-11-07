@@ -26,3 +26,5 @@ class CalculatorTest(unittest.TestCase):
         self.assertEqual(self.calculator.divide(0, 5), "Can't divide by zero")
 
     # Unit test of empty input
+    def test_empty_input(self):
+        self.assertEqual(self.calculator.user_input(), None)
