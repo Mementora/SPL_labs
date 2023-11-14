@@ -1,6 +1,5 @@
 from colorama import Fore, Style
 from fonts import *  # Import your fonts
-
 class Console:
     def __init__(self):
         self.fonts = {

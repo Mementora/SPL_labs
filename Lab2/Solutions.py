@@ -6,10 +6,18 @@ class Calculator:
         self.second_input = None
         self.operator = None
 
+    def set_user_input(self, first_input, second_input):
+        if first_input and second_input:  # Check if inputs are not empty or None
+            self.first_input = self.safe_input(first_input)
+            self.second_input = self.safe_input(second_input)
+            return "Inputs set successfully"
+        else:
+            return "Error: Empty input"
+
     def user_input(self):
         self.first_input = self.safe_input(input("Enter the first number: "))
         self.second_input = self.safe_input(input("Enter the second number: "))
-        self.operator = self.safe_input(input("enter operator (+,-,*,/,sqrt,^,%): "))
+        self.operator = self.get_operator()
         result = self.start_calculation()
         print("Result:", result)
 
@@ -18,12 +26,18 @@ class Calculator:
         return self.start_calculation()
 
     def safe_input(self, input_value):
-        if input_value.strip() == '':
+        if input_value.strip() == '' or input_value.strip() is None:
             print("Error: Empty input")
-            return "Please enter a valid number: "
+            return "Error: Empty input"
         return float(input_value)
 
-
+    def get_operator(self):
+        valid_operators = ['+', '-', '*', '/', 'sqrt', '^', '%']
+        operator = input("Enter operator (+,-,*,/,sqrt,^,%): ")
+        while operator not in valid_operators:
+            print("Error: Invalid operator")
+            operator = input("Enter a valid operator (+,-,*,/,sqrt,^,%): ")
+        return operator
 
     def check_input(self):
         if self.first_input == '' or self.second_input == '':
@@ -50,14 +64,14 @@ class Calculator:
             return "Invalid operator"
 
     def add(self, num1, num2):
-        return num1 + num2
+        return float(num1 + num2)
 
     def subtract(self, num1, num2):
         return num1 - num2
 
     def divide(self, num1, num2):
         if num1 == 0 or num2 == 0:
-            return "Can't divide by zero"
+            raise ZeroDivisionError("Can't divide by zero")
         return num1 / num2
 
     def multiply(self, num1, num2):

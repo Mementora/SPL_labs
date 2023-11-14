@@ -1,4 +1,3 @@
-
 class ConsoleCalculator:
     def __init__(self, calculator):
         self.calculator = calculator

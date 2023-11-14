@@ -1,4 +1,4 @@
-from Console import Console  # Import the updated Console class
+from Console import Console
 
 if __name__ == '__main__':
     console_app = Console()
