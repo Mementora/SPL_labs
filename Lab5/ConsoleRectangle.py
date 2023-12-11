@@ -1,9 +1,7 @@
 from Rectangle import Rectangle
 
-
 class ConsoleRectangle(Rectangle):
     figure = Rectangle
-
 
     @classmethod
     def set_parameters(cls, dct, input_message):
