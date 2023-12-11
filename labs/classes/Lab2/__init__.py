@@ -1,1 +1,1 @@
-from Lab2 import Solutions
+from labs.classes.Lab2.Solutions import Calculator

@@ -1,14 +1,19 @@
 from colorama import Fore, Style
-from fonts import *  # Import your fonts
-class Console:
-    def __init__(self):
-        self.fonts = {
-            "standard": standard_dic,
-            "starwars": starwars_dic,
-            "avatar": avatar_dic,
-            "binary": standard_bin_dic
-        }
-        self.colors = [Fore.BLACK, Fore.RED, Fore.BLUE, Fore.YELLOW]
+from ASCIIArtGenerator import *
+
+class AsciiArtConsole:
+    def __init__(self, ascii_art_generator):
+        self.ascii_art_generator = ascii_art_generator
+
+    def run(self):
+        user_input, font_choice, color_choice = self.get_user_input()
+        ascii_text = self.ascii_art_generator.generate_ascii_art(user_input, font_choice, color_choice)
+        self.preview_ascii_art(ascii_text, self.ascii_art_generator.colors[color_choice])
+
+        save_option = input("Do you want to save the ASCII art to a file? (y/n): ")
+        if save_option.lower() == 'y':
+            file_name = input("Enter the file name (without extension): ")
+            self.ascii_art_generator.save_ascii_art(ascii_text, file_name)
 
     def get_user_input(self):
         user_input = input("Enter a word to convert to ASCII art: ")
@@ -23,7 +28,7 @@ class Console:
 
     def show_available_fonts(self):
         print("Available font styles:")
-        for i, font in enumerate(self.fonts, start=0):
+        for i, font in enumerate(self.ascii_art_generator.fonts, start=0):
             print(f"{i}. {font}")
 
     def get_font_choice(self):
@@ -39,7 +44,7 @@ class Console:
 
     def show_available_colors(self):
         print("Available text colors:")
-        for i, color in enumerate(self.colors, start=0):
+        for i, color in enumerate(self.ascii_art_generator.colors, start=0):
             print(f"{i}. Color {color}")
 
     def get_color_choice(self):
@@ -55,24 +60,3 @@ class Console:
 
     def preview_ascii_art(self, ascii_text, selected_color):
         print(selected_color + ascii_text + Style.RESET_ALL)
-
-    def generate_ascii_art(self, text, font_choice, color_choice):
-        selected_font = list(self.fonts.values())[font_choice]
-        # Assuming the text contains only letters and is in lowercase for the font dictionary
-        ascii_art = ""
-        for line in range(len(selected_font['a'].split('\n'))):
-            for char in text:
-                if char.isalpha():
-                    if char in selected_font:
-                        ascii_art += selected_font[char].split('\n')[line]
-                    else:
-                        ascii_art += " " * 5  # Default space if character is not available
-                else:
-                    ascii_art += "\n"  # Move to the next line for non-letter characters
-            ascii_art += "\n"  # Move to the next line after completing a line of characters
-        return ascii_art
-
-    def save_ascii_art(self, ascii_text, file_name):
-        with open(f"{file_name}.txt", "w") as file:
-            file.write(ascii_text)
-        print(f"ASCII art is saved in a file {file_name}.txt")
