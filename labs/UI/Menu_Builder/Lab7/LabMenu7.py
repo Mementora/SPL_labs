@@ -1,6 +1,6 @@
 from colorama import Fore, init
-from labs.classes.Lab7.display_dog_api import DisplayDogApi
 from tabulate import tabulate
+from labs.classes.Lab7.display_dog_api import DisplayDogApi
 from labs.Shared.SaveFormats.save_formats import save_in_format
 import sys
 
@@ -8,7 +8,7 @@ init(autoreset=True)
 DataPath = '/Users/olegkuzo/Desktop/політех/2Курс/СМП/SPLLabs/Labs/Data/Lab7/'
 
 
-class UserInterface:
+class MenuLab7:
     def __init__(self):
         self.saver = save_in_format()
 

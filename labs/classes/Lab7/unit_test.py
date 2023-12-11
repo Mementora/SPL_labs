@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import patch, MagicMock
 from display_dog_api import DisplayDogApi
-from labs.UI.Menu_Builder.Lab7.interface import UserInterface
+from labs.UI.Menu_Builder.Lab7.LabMenu7 import MenuLab7
 
 class TestDisplayDogApi(unittest.TestCase):
     @patch('requests.get')
@@ -17,4 +17,4 @@ class TestDisplayDogApi(unittest.TestCase):
     @patch('builtins.input', side_effect=['3'])
     def test_invalid_display_format(self, mock_input):
         with self.assertRaises((ValueError, StopIteration)):
-            UserInterface.choose_display_format()
+            MenuLab7.choose_display_format()
