@@ -1,16 +1,8 @@
-from colorama import Fore, init
-from display_dog_api import DisplayDogApi
+from colorama import Fore
 from tabulate import tabulate
-from save_formats import save_in_format
-import sys
+from labs.classes.Lab7.display_dog_api import DisplayDogApi
 
-init(autoreset=True)
-DataPath = '/Users/olegkuzo/Desktop/політех/2Курс/СМП/SPLLabs/Labs/Data/Lab7/'
-
-
-class UserInterface:
-    def __init__(self):
-        self.saver = save_in_format()
+class MenuUtils:
 
     @staticmethod
     def display_table(data, color):
@@ -62,53 +54,24 @@ class UserInterface:
         option = input("Enter the number of the option: ")
         return option
 
-    def fetch_dog_breeds(self):
+    @staticmethod
+    def fetch_dog_breeds():
         print("Fetching dog breeds...")
         breeds = DisplayDogApi.get_all_breeds()
         print(f"Received {len(breeds)} breeds.")
         return breeds
 
-    def display_format_choice(self, breeds):
-        color = self.choose_color()
-        format_choice = self.choose_display_format()
-
-        if format_choice == "1":
-            print("Displaying table...")
-            self.display_table(breeds, color)
-        elif format_choice == "2":
-            print("Displaying list...")
-            self.display_list(breeds, color)
-
-    def save_data(self, breeds):
+    @staticmethod
+    def save_data(saver,DataPath, breeds):
         save_choice = input("Do you want to save the data? (y/n): ")
         if save_choice.lower() == 'y':
             save_format = input("Choose a save format:\n1. JSON\n2. CSV\n3. TXT\nEnter the number of the save format: ")
             save_filename = input("Enter the filename: ")
             if save_format == "1":
-                self.saver.save_to_json(breeds, DataPath, save_filename)
+                saver.save_to_json(breeds, DataPath, save_filename)
             elif save_format == "2":
-                self.saver.save_to_csv(breeds, DataPath, save_filename)
+                saver.save_to_csv(breeds, DataPath, save_filename)
             elif save_format == "3":
-                self.saver.save_to_txt(breeds, DataPath, save_filename)
+                saver.save_to_txt(breeds, DataPath, save_filename)
             else:
                 print("Invalid save format. Please enter 1, 2, or 3.")
-
-    def main(self):
-        api_key = "live_erHxdDaDlKKkhVAn0IpEIPT9trh9HzJx"
-
-        while True:
-            user_option = self.start_menu()
-
-            if user_option == "1":
-                breeds = self.fetch_dog_breeds()
-                self.display_format_choice(breeds)
-                self.save_data(breeds)
-
-                repeat_choice = input("Do you want to perform another operation? (y/n): ")
-                if repeat_choice.lower() != 'y':
-                    break
-            elif user_option == "2":
-                print("Exiting the program. Goodbye!")
-                break
-            else:
-                print("Invalid option. Please enter 1 or 2.")

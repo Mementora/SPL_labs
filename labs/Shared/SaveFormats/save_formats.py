@@ -1,7 +1,7 @@
 import json, csv
 import os
 
-from colorama import Fore, init
+from colorama import Fore
 from labs.classes.Lab7.display_dog_api import DisplayDogApi
 
 class save_in_format:

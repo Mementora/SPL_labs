@@ -19,7 +19,3 @@ class LabMenu6:
             print(f"Test results successfully saved to {file_path}")
         except Exception as e:
             print(f"Error: {e}")
-
-# Example usage:
-lab_menu = LabMenu6()
-lab_menu.run_tests()

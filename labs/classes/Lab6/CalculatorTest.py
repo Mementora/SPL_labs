@@ -1,10 +1,10 @@
 import unittest
 from unittest.mock import patch
-from Lab2 import Solutions
+from labs.classes.Lab2.Solutions import Calculator
 
 class CalculatorTester(unittest.TestCase):
     def setUp(self):
-        self.calculator = Solutions.Calculator()
+        self.calculator = Calculator.Calculator()
 
     # Unit test of adding two numbers
     def test_add(self):
