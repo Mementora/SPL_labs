@@ -1,0 +1,24 @@
+test_add (labs.classes.Lab6.CalculatorTest.CalculatorTester) ... ok
+test_divide (labs.classes.Lab6.CalculatorTest.CalculatorTester) ... ok
+test_exception_by_division_by_zero (labs.classes.Lab6.CalculatorTest.CalculatorTester) ... ok
+test_invalid_operator (labs.classes.Lab6.CalculatorTest.CalculatorTester) ... ok
+test_mock_empty_input (labs.classes.Lab6.CalculatorTest.CalculatorTester) ... ERROR
+test_multiply (labs.classes.Lab6.CalculatorTest.CalculatorTester) ... ok
+test_remainder_divide_by_zero (labs.classes.Lab6.CalculatorTest.CalculatorTester) ... ok
+test_square_root_negative (labs.classes.Lab6.CalculatorTest.CalculatorTester) ... ok
+test_subtract (labs.classes.Lab6.CalculatorTest.CalculatorTester) ... ok
+
+======================================================================
+ERROR: test_mock_empty_input (labs.classes.Lab6.CalculatorTest.CalculatorTester)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/unittest/mock.py", line 1337, in patched
+    return func(*newargs, **newkeywargs)
+  File "/Users/olegkuzo/Desktop/політех/2Курс/СМП/SPLLabs/Labs/labs/classes/Lab6/CalculatorTest.py", line 42, in test_mock_empty_input
+    result = self.calculator.set_user_input(None, None)
+AttributeError: 'Calculator' object has no attribute 'set_user_input'
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.002s
+
+FAILED (errors=1)

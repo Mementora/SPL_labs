@@ -4,6 +4,8 @@ import labs.classes.Lab2.Solutions
 import labs.UI.Menu_Builder.Lab3.LabMenu3 as menu3
 import labs.UI.Menu_Builder.Lab4.LabMenu4 as menu4
 import labs.classes.Lab4.ASCIIArtGenerator
+import labs.UI.Menu_Builder.Lab5.LabMenu5 as menu5
+import labs.UI.Menu_Builder.Lab6.LabMenu6 as menu6
 
 
 class main:
@@ -12,6 +14,8 @@ class main:
         print("if you want to open lab2, press 2:")
         print("if you want to open lab2, press 3:")
         print("if you want to open lab2, press 4:")
+        print("if you want to open lab2, press 5:")
+        print("if you want to open lab2, press 6:")
         user_choice = input()
     if user_choice == '1':
             calculator_lab1 = menu1.LabMenu1()
@@ -33,5 +37,11 @@ class main:
         ascii_generator = labs.classes.Lab4.ASCIIArtGenerator.AsciiArtGenerator()
         ascii = menu4.LabMenu4(ascii_generator)
         ascii.run()
+    if user_choice == '5':
+        rectangle = menu5.ConsoleInterface()
+        rectangle.run()
+    if user_choice == '6':
+        tests = menu6.LabMenu6()
+        tests.run_tests()
 
 

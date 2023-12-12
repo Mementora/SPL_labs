@@ -1,4 +1,4 @@
-from Rectangle import Rectangle
+from labs.classes.Lab5.Rectangle import Rectangle
 
 class ConsoleRectangle(Rectangle):
     figure = Rectangle
