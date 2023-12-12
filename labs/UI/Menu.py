@@ -7,6 +7,7 @@ class main:
         print("if you want to open lab5, press 5:")
         print("if you want to open lab6, press 6:")
         print("if you want to open lab7, press 7:")
+        print("if you want to open lab8, press 8:")
 
         user_choice = input()
     if user_choice == '1':
@@ -53,5 +54,10 @@ class main:
         import labs.UI.Menu_Builder.Lab7.LabMenu7 as menu7
         api_caller = menu7.MenuLab7()
         api_caller.main()
+
+    if user_choice == '8':
+        import labs.UI.Menu_Builder.Lab8.LabMenu8 as menu8
+        lab8 = menu8.LabMenu8()
+        lab8.run()
 
 
