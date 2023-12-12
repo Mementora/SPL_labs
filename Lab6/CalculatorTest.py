@@ -42,7 +42,7 @@ class CalculatorTester(unittest.TestCase):
 
     #Unit test of mock empty input
     @patch("builtins.input", side_effect=['', '5'])
-    def test_mock_empty_input(self, mock_input):
+    def test_mock_empty_input(self):
         result = self.calculator.set_user_input(None, None)
         self.assertEqual(result, "Error: Empty input")
 

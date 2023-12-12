@@ -24,11 +24,6 @@ class UserInterface:
             print(color + f"{breed}: {DisplayDogApi.get_random_image(breed)}")
 
     @staticmethod
-    def signal_handler(sig, frame):
-        print("You pressed Ctrl+C!")
-        sys.exit(0)
-
-    @staticmethod
     def choose_display_format():
         while True:
             print("Choose a display format:")

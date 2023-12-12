@@ -1,5 +1,5 @@
 from colorama import Fore, Style
-from labs.Shared.Fonts import *
+from labs.classes.Lab4.fonts import *
 
 class AsciiArtGenerator:
     def __init__(self):

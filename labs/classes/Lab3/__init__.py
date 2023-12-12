@@ -1,1 +1,1 @@
-from ASCIIArtGenerator import *
+from labs.classes.Lab3.ASCIIArtGenerator import ASCIIArtGenerator
