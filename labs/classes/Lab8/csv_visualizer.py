@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 import matplotlib.pyplot as plt
 import plotly.express as px
@@ -28,25 +29,37 @@ class MockDataVisualizer:
         else:
             print("Invalid choice. Please enter a number from 1 to 4.")
 
+    def save_plots(self, fig, filename):
+        path = '/Users/olegkuzo/Desktop/політех/2Курс/СМП/SPLLabs/Labs/labs/Data/Lab8'
+        full_path = os.path.join(path, filename)
+        fig.savefig(full_path)
+        print(f"Plot saved at: {full_path}")
+
     def pie_chart(self):
         # Visualization of car maker distribution
         car_maker_distribution = self.df['car'].value_counts()
-        car_maker_distribution.plot(kind='pie', autopct='%1.1f%%', title='Car Maker Distribution')
+        pie_fig, pie_ax = plt.subplots()
+        car_maker_distribution.plot(kind='pie', autopct='%1.1f%%', title='Car Maker Distribution', ax=pie_ax)
+        self.save_plots(pie_fig, 'pie_chart.png')
         plt.show()
 
     def scatter_plot(self):
         # Scatter plot of first name and last name
-        plt.scatter(self.df['first_name'], self.df['last_name'], alpha=0.5)
-        plt.xlabel('First Name')
-        plt.ylabel('Last Name')
-        plt.title('Scatter Plot of First and Last Names')
+        scatter_fig, scatter_ax = plt.subplots()
+        scatter_ax.scatter(self.df['first_name'], self.df['last_name'], alpha=0.5)
+        scatter_ax.set_xlabel('First Name')
+        scatter_ax.set_ylabel('Last Name')
+        scatter_ax.set_title('Scatter Plot of First and Last Names')
+        self.save_plots(scatter_fig, 'scatter_plot.png')
         plt.show()
 
     def bar_chart(self):
         # Bar chart of the number of occurrences for each car maker
+        bar_fig, bar_ax = plt.subplots()
         car_maker_counts = self.df['car_maker'].value_counts()
         car_maker_counts.plot(kind='bar', xlabel='Car Maker', ylabel='Count',
-                              title='Number of Cars for Each Maker', rot=45)
+                              title='Number of Cars for Each Maker', rot=45, ax=bar_ax)
+        self.save_plots(bar_fig, 'bar_chart.png')
         plt.show()
 
     def show_all_plots(self):
@@ -79,9 +92,9 @@ class MockDataVisualizer:
         plt.subplots_adjust(wspace=0.5, hspace=0.5)
 
         # Save plots as PNG and HTML
-        plt.savefig('output_plot.png')
+        self.save_plots(fig, 'all_plots.png')
         fig = px.scatter(self.df, x='first_name', y='last_name', color='car',
                          title='Scatter Plot of First and Last Names')
-        fig.write_html('output_plot.html')
+        fig.write_html('/Users/olegkuzo/Desktop/політех/2Курс/СМП/SPLLabs/Labs/labs/Data/Lab8/output_plot.html')
 
         plt.show()
