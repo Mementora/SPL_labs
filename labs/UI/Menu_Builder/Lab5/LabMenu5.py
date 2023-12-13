@@ -1,5 +1,6 @@
 from labs.classes.Lab5.ConsoleRectangle import ConsoleRectangle
 
+
 class ConsoleInterface:
     def __init__(self):
         pass
@@ -13,8 +14,13 @@ class ConsoleInterface:
         print("if you want to draw rectangle, press 1: ")
         print("if you want to exit, press f:")
         user_choice = input()
+
         if user_choice == '1':
             rectangle.run()
+            self.save_object(rectangle)
         elif user_choice == 'f':
             return 1
 
+    def save_object(self, rectangle):
+        filename = input("Enter the filename to save the object: ")
+        rectangle.save_object(rectangle, filename)
