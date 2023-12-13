@@ -1,1 +1,1 @@
-from labs.classes.Lab2.Solutions import Calculator
+from labs.classes.Lab2.solutions import Calculator

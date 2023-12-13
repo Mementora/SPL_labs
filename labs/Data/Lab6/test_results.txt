@@ -1,24 +1,49 @@
-test_add (labs.classes.Lab6.CalculatorTest.CalculatorTester) ... ok
-test_divide (labs.classes.Lab6.CalculatorTest.CalculatorTester) ... ok
-test_exception_by_division_by_zero (labs.classes.Lab6.CalculatorTest.CalculatorTester) ... ok
-test_invalid_operator (labs.classes.Lab6.CalculatorTest.CalculatorTester) ... ok
-test_mock_empty_input (labs.classes.Lab6.CalculatorTest.CalculatorTester) ... ERROR
-test_multiply (labs.classes.Lab6.CalculatorTest.CalculatorTester) ... ok
-test_remainder_divide_by_zero (labs.classes.Lab6.CalculatorTest.CalculatorTester) ... ok
-test_square_root_negative (labs.classes.Lab6.CalculatorTest.CalculatorTester) ... ok
-test_subtract (labs.classes.Lab6.CalculatorTest.CalculatorTester) ... ok
+test_addition (labs.classes.Lab6.CalculatorTest.CalculatorArithmeticTester)
+Test the addition functionality of the Calculator class. ... ERROR
+test_division (labs.classes.Lab6.CalculatorTest.CalculatorArithmeticTester)
+Test the division functionality of the Calculator class. ... ERROR
+test_multiplication (labs.classes.Lab6.CalculatorTest.CalculatorArithmeticTester)
+Test the multiplication functionality of the Calculator class. ... ERROR
+test_subtraction (labs.classes.Lab6.CalculatorTest.CalculatorArithmeticTester)
+Test the subtraction functionality of the Calculator class. ... ERROR
 
 ======================================================================
-ERROR: test_mock_empty_input (labs.classes.Lab6.CalculatorTest.CalculatorTester)
+ERROR: test_addition (labs.classes.Lab6.CalculatorTest.CalculatorArithmeticTester)
+Test the addition functionality of the Calculator class.
 ----------------------------------------------------------------------
 Traceback (most recent call last):
-  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/unittest/mock.py", line 1337, in patched
-    return func(*newargs, **newkeywargs)
-  File "/Users/olegkuzo/Desktop/політех/2Курс/СМП/SPLLabs/Labs/labs/classes/Lab6/CalculatorTest.py", line 42, in test_mock_empty_input
-    result = self.calculator.set_user_input(None, None)
-AttributeError: 'Calculator' object has no attribute 'set_user_input'
+  File "/Users/olegkuzo/Desktop/політех/2Курс/СМП/SPLLabs/Labs/labs/classes/Lab6/CalculatorTest.py", line 14, in setUp
+    self.calculator = Calculator.Calculator()
+AttributeError: type object 'Calculator' has no attribute 'Calculator'
+
+======================================================================
+ERROR: test_division (labs.classes.Lab6.CalculatorTest.CalculatorArithmeticTester)
+Test the division functionality of the Calculator class.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/olegkuzo/Desktop/політех/2Курс/СМП/SPLLabs/Labs/labs/classes/Lab6/CalculatorTest.py", line 14, in setUp
+    self.calculator = Calculator.Calculator()
+AttributeError: type object 'Calculator' has no attribute 'Calculator'
+
+======================================================================
+ERROR: test_multiplication (labs.classes.Lab6.CalculatorTest.CalculatorArithmeticTester)
+Test the multiplication functionality of the Calculator class.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/olegkuzo/Desktop/політех/2Курс/СМП/SPLLabs/Labs/labs/classes/Lab6/CalculatorTest.py", line 14, in setUp
+    self.calculator = Calculator.Calculator()
+AttributeError: type object 'Calculator' has no attribute 'Calculator'
+
+======================================================================
+ERROR: test_subtraction (labs.classes.Lab6.CalculatorTest.CalculatorArithmeticTester)
+Test the subtraction functionality of the Calculator class.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/olegkuzo/Desktop/політех/2Курс/СМП/SPLLabs/Labs/labs/classes/Lab6/CalculatorTest.py", line 14, in setUp
+    self.calculator = Calculator.Calculator()
+AttributeError: type object 'Calculator' has no attribute 'Calculator'
 
 ----------------------------------------------------------------------
-Ran 9 tests in 0.002s
+Ran 4 tests in 0.002s
 
-FAILED (errors=1)
+FAILED (errors=4)

@@ -1,4 +1,8 @@
 class Figure:
+    """
+    Base class for creating 2D and 3D shapes with specific styles and coloring.
+    """
+
     length_x = 0
     length_y = 0
 
@@ -38,6 +42,11 @@ class Figure:
     }
 
     def __init__(self, **kwargs):
+        """
+        Initialize the Figure.
+
+        :param kwargs: Keyword arguments for setting size_x, size_y, and size_z.
+        """
         if 'size_y' in kwargs:
             self.size_y = kwargs['size_y']
         if 'size_x' in kwargs:
@@ -53,65 +62,108 @@ class Figure:
             self.size_y = self.size_z = self.size_x = 0
 
     def set_length_x(self):
-        self.length_x = self.length_x
+        """Set the length_x attribute."""
+        self.length_x = self.size_x
 
     def set_length_y(self):
-        self.length_y = self.length_y
+        """Set the length_y attribute."""
+        self.length_y = self.size_y
 
     def set_zoom(self):
+        """Set the zoom level for size_x, size_y, and size_z."""
         self.size_x *= self._zoom
         self.size_y *= self._zoom
         self.size_z *= self._zoom
 
-    @staticmethod
     def color_line(self, color, line):
+        """
+        Apply color to a line.
+
+        :param color: Color code.
+        :param line: Line to be colored.
+        :return: Colored line.
+        """
         return color + line + self._default_color
 
-    @staticmethod
     def build_2d_shadow(self, count, symbol, size):
+        """
+        Build a 2D shadow effect.
+
+        :param count: Number of shadow lines.
+        :param symbol: Symbol for the shadow.
+        :param size: Size of the shadow.
+        :return: List of shadow lines.
+        """
         lines = []
         for index in range(count):
             line = self.build_symbol(self._SYMBOLS.get('space'), self._space, self._default_color)
-            line += self.color_line(self, self._default_color, symbol * (size - index))
+            line += self.color_line(self._default_color, symbol * (size - index))
             lines += [line]
         return lines
 
     def build_symbol(self, symbol, count, color):
+        """
+        Build a line of symbols.
+
+        :param symbol: Symbol to be repeated.
+        :param count: Number of times to repeat the symbol.
+        :param color: Color code.
+        :return: Line of symbols.
+        """
         line = ''
         for i in range(count):
-            line += self.color_line(self, color, symbol)
+            line += self.color_line(color, symbol)
         return line
 
     def build(self):
-        self._result = self._result
+        """Build the figure."""
+        # Your logic for building the shape
 
     def create(self):
+        """Create the figure."""
         self.set_zoom()
         self.build()
 
     def save(self, filename):
+        """
+        Save the figure to a file.
+
+        :param filename: Name of the file.
+        """
         self.create()
         result = self.remove_color_codes(self._result)
-        # print(result)
         with open(filename, 'w') as file:
             file.write(result)
 
     def remove_color_codes(self, text):
+        """
+        Remove color codes from a text.
+
+        :param text: Text with color codes.
+        :return: Text without color codes.
+        """
         while '\033[' in text:
             start = text.find('\033[')
             end = text.find('m', start)
             if end != -1:
-                text = text[:start] + text[end+1:]
+                text = text[:start] + text[end + 1:]
             else:
                 break
         return text
 
-    @staticmethod
-    def convert(lines):
-        result = ''
-        for line in lines:
-            result += line + '\n'
-        return result
+    def convert(self, lines):
+        """
+        Convert a list of lines to a string.
+
+        :param lines: List of lines.
+        :return: String representation of the lines.
+        """
+        return '\n'.join(lines)
 
     def __str__(self):
+        """
+        Get a string representation of the figure.
+
+        :return: String representation.
+        """
         return self._result

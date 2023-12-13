@@ -1,12 +1,31 @@
 import unittest
-from labs.classes.Lab6.CalculatorTest import CalculatorTester
+from labs.classes.Lab6.calculator_test import CalculatorArithmeticTester
 
 class LabMenu6:
+    """
+    A class representing the menu for Lab 6.
+
+    Attributes:
+    - None
+
+    Methods:
+    - __init__(): Constructor for LabMenu6 class.
+    - run_tests(): Run the CalculatorArithmeticTester test suite and save the results to a file.
+
+    """
     def __init__(self):
+        """
+        Constructor for LabMenu6 class.
+
+        """
         pass
 
     def run_tests(self):
-        test_suite = unittest.TestLoader().loadTestsFromTestCase(CalculatorTester)
+        """
+        Run the CalculatorArithmeticTester test suite and save the results to a file.
+
+        """
+        test_suite = unittest.TestLoader().loadTestsFromTestCase(CalculatorArithmeticTester)
 
         # Specify the full path to save the test results text file
         file_path = "/Users/olegkuzo/Desktop/політех/2Курс/СМП/SPLLabs/Labs/labs/Data/Lab6/test_results.txt"

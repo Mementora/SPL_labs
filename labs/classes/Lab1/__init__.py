@@ -1,1 +1,1 @@
-from labs.classes.Lab1.TaskComplition import *
+from labs.classes.Lab1.task_complition import *
