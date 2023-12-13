@@ -1,7 +1,9 @@
 from colorama import Fore, Style
 from labs.classes.Lab4.fonts import *
+from labs.Shared.saveASCIIArt.SaveASCIIArt import save_ascii
 
 class AsciiArtGenerator:
+    DataPath = '/Users/olegkuzo/Desktop/політех/2Курс/СМП/SPLLabs/Labs/labs/Data/Lab4/'
     def __init__(self):
         self.fonts = {
             "standard": standard_dic,
@@ -10,6 +12,7 @@ class AsciiArtGenerator:
             "binary": standard_bin_dic
         }
         self.colors = [Fore.BLACK, Fore.RED, Fore.BLUE, Fore.YELLOW]
+        self.save_ascii_handler = save_ascii()
 
     def generate_ascii_art(self, text, font_choice, color_choice):
         selected_font = list(self.fonts.values())[font_choice]
@@ -26,7 +29,5 @@ class AsciiArtGenerator:
             ascii_art += "\n"  # Move to the next line after completing a line of characters
         return self.colors[color_choice] + ascii_art + Style.RESET_ALL
 
-    def save_ascii_art(self, ascii_text, file_name):
-        with open(f"{file_name}.txt", "w") as file:
-            file.write(ascii_text)
-        print(f"ASCII art is saved in a file {file_name}.txt")
+    def ask_save_ascii_art(self, ascii_text):
+        self.save_ascii_handler.ask_save_ascii_art(ascii_text, self.DataPath)

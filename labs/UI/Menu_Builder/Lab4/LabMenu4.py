@@ -1,18 +1,19 @@
 from colorama import Fore, Style
+from labs.Shared.saveASCIIArt.SaveASCIIArt import save_ascii
 
 class LabMenu4:
+    DataPath = '/Users/olegkuzo/Desktop/політех/2Курс/СМП/SPLLabs/Labs/labs/Data/Lab4/'
     def __init__(self, ascii_art_generator):
         self.ascii_art_generator = ascii_art_generator
+        self.save_ascii_handler = save_ascii()
 
     def run(self):
         user_input, font_choice, color_choice = self.get_user_input()
         ascii_text = self.ascii_art_generator.generate_ascii_art(user_input, font_choice, color_choice)
         self.preview_ascii_art(ascii_text, self.ascii_art_generator.colors[color_choice])
 
-        save_option = input("Do you want to save the ASCII art to a file? (y/n): ")
-        if save_option.lower() == 'y':
-            file_name = input("Enter the file name (without extension): ")
-            self.ascii_art_generator.save_ascii_art(ascii_text, file_name)
+        self.ask_save_ascii_art(ascii_text, self.DataPath)
+
 
     def get_user_input(self):
         user_input = input("Enter a word to convert to ASCII art: ")
@@ -59,3 +60,6 @@ class LabMenu4:
 
     def preview_ascii_art(self, ascii_text, selected_color):
         print(selected_color + ascii_text + Style.RESET_ALL)
+
+    def ask_save_ascii_art(self, ascii_text, DataPath):
+        self.save_ascii_handler.ask_save_ascii_art(ascii_text, DataPath)

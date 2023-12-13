@@ -1,5 +1,6 @@
 from colorama import Fore, Style
 from labs.classes.Lab3.ASCIIArtGenerator import ASCIIArtGenerator
+from labs.Shared.saveASCIIArt.SaveASCIIArt import save_ascii
 import os
 
 class LabMenu3:
@@ -7,6 +8,7 @@ class LabMenu3:
     def __init__(self):
         self.colors = [Fore.RED, Fore.BLUE, Fore.GREEN, Fore.BLACK]
         self.generator = ASCIIArtGenerator()
+        self.save_ascii_handler = save_ascii()
 
     def get_user_input(self):
         user_input = input("Enter a word or phrase to convert to ASCII art: ")
@@ -82,17 +84,4 @@ class LabMenu3:
         return colored_text
 
     def ask_save_ascii_art(self, ascii_text):
-        save_option = input("Do you want to save the ASCII art to a file? (y/n): ").strip().lower()
-        if save_option != 'y':
-            print("ASCII art not saved.")
-            return
-
-        file_name = input("Enter the desired file name (e.g., art.txt): ").strip()
-
-        # Construct the file path using DataPath
-        file_path = os.path.join(self.DataPath, f"{file_name}")
-
-        os.makedirs(os.path.dirname(file_path), exist_ok=True)  # Ensure the directory exists
-
-        self.generator.save_ascii_art(ascii_text, file_path)
-        print(f"ASCII art saved to {file_path}")
+        self.save_ascii_handler.ask_save_ascii_art(ascii_text, self.DataPath)

@@ -1,11 +1,11 @@
-
-from math import sqrt
+from labs.Shared.CalcOperations.CalcOp import CalculatorOperations
 
 class Calculator:
     def __init__(self):
         self.first_input = None
         self.second_input = None
         self.operator = None
+        self.calc_operations = CalculatorOperations()
 
     def perform_calculation(self):
         return self.start_calculation()
@@ -18,45 +18,18 @@ class Calculator:
 
     def start_calculation(self):
         if self.operator == '+':
-            return self.add(self.first_input, self.second_input)
+            return self.calc_operations.add(self.first_input, self.second_input)
         elif self.operator == '-':
-            return self.subtract(self.first_input, self.second_input)
+            return self.calc_operations.subtract(self.first_input, self.second_input)
         elif self.operator == '*':
-            return self.multiply(self.first_input, self.second_input)
+            return self.calc_operations.multiply(self.first_input, self.second_input)
         elif self.operator == '/':
-            return self.divide(self.first_input, self.second_input)
+            return self.calc_operations.divide(self.first_input, self.second_input)
         elif self.operator == 'sqrt':
-            return self.square_root(self.first_input)
+            return self.calc_operations.square_root(self.first_input)
         elif self.operator == '^':
-            return self.power(self.first_input, self.second_input)
+            return self.calc_operations.power(self.first_input, self.second_input)
         elif self.operator == '%':
-            return self.remainder(self.first_input, self.second_input)
+            return self.calc_operations.remainder(self.first_input, self.second_input)
         else:
             return "Invalid operator"
-
-    def add(self, num1, num2):
-        return float(num1 + num2)
-
-    def subtract(self, num1, num2):
-        return num1 - num2
-
-    def divide(self, num1, num2):
-        if num1 == 0 or num2 == 0:
-            raise ZeroDivisionError("Can't divide by zero")
-        return num1 / num2
-
-    def multiply(self, num1, num2):
-        return num1 * num2
-
-    def square_root(self, num1):
-        if num1 < 0:
-            return "Cannot take the square root of a negative number"
-        return sqrt(num1)
-
-    def power(self, num1, num2):
-        return num1 ** num2
-
-    def remainder(self, num1, num2):
-        if num2 == 0:
-            return "Can't find the remainder when dividing by zero"
-        return num1 % num2

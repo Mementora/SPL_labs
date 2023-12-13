@@ -26,8 +26,3 @@ class ASCIIArtGenerator:
         scaled_ascii_text = '\n'.join(scaled_ascii_lines[:height])
 
         return scaled_ascii_text
-
-    def save_ascii_art(self, ascii_text, file_name):
-        with open(f"{file_name}.txt", "w") as file:
-            file.write(ascii_text)
-        print(f"ASCII art is saved in a file {file_name}.txt")
