@@ -1,8 +1,12 @@
 import os
+from datetime import datetime
 
 class save_ascii:
     def __init__(self):
         pass
+
+    def log_save_ascii_art(self, file_path):
+        print(f"ASCII art saved to {file_path}. Date: {datetime.now()}")
 
     def ask_save_ascii_art(self, ascii_text, DataPath):
         try:
@@ -18,12 +22,10 @@ class save_ascii:
 
             os.makedirs(os.path.dirname(file_path), exist_ok=True)  # Ensure the directory exists
 
-            # Assuming you have a generator attribute in your class, adjust accordingly
-            # self.generator.save_ascii_art(ascii_text, file_path)
             with open(file_path, 'w') as file:
                 file.write(ascii_text)
 
-            print(f"ASCII art saved to {file_path}")
+            self.log_save_ascii_art(file_path)
 
         except Exception as e:
             print(f"Error saving ASCII art: {e}")
