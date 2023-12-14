@@ -147,6 +147,6 @@ class MockDataVisualizer:
         self.save_plots(fig, 'all_plots.png')
         fig = px.scatter(self.df, x='first_name', y='last_name', color='car',
                          title='Scatter Plot of First and Last Names')
-        fig.write_html('/Users/olegkuzo/Desktop/політех/2Курс/СМП/SPLLabs/Labs/labs/Data/Lab8/output_plot.html')
+        fig.write_html('/Labs/labs/Data/Lab8/output_plot.html')
 
         plt.show()

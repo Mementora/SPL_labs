@@ -2,7 +2,7 @@ import logging
 from math import sqrt
 from datetime import datetime
 
-log_file_path = "/Users/olegkuzo/Desktop/політех/2Курс/СМП/SPLLabs/Labs/labs/Data/logger/logger.log"
+log_file_path = "/Labs/labs/Data/logger/logger.log"
 
 class CalculatorOperations:
     """

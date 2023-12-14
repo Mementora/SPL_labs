@@ -24,7 +24,7 @@ class LabMenu3:
     - ask_save_ascii_art(ascii_text): Ask the user if they want to save the ASCII art.
 
     """
-    DataPath = '/Users/olegkuzo/Desktop/політех/2Курс/СМП/SPLLabs/Labs/labs/Data/Lab3/'
+    DataPath = '/Labs/labs/Data/Lab3/'
 
     def __init__(self):
         """

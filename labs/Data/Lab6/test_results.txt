@@ -1,49 +1,49 @@
-test_addition (labs.classes.Lab6.CalculatorTest.CalculatorArithmeticTester)
+test_addition (labs.classes.Lab6.calculator_test.CalculatorArithmeticTester)
 Test the addition functionality of the Calculator class. ... ERROR
-test_division (labs.classes.Lab6.CalculatorTest.CalculatorArithmeticTester)
+test_division (labs.classes.Lab6.calculator_test.CalculatorArithmeticTester)
 Test the division functionality of the Calculator class. ... ERROR
-test_multiplication (labs.classes.Lab6.CalculatorTest.CalculatorArithmeticTester)
+test_multiplication (labs.classes.Lab6.calculator_test.CalculatorArithmeticTester)
 Test the multiplication functionality of the Calculator class. ... ERROR
-test_subtraction (labs.classes.Lab6.CalculatorTest.CalculatorArithmeticTester)
+test_subtraction (labs.classes.Lab6.calculator_test.CalculatorArithmeticTester)
 Test the subtraction functionality of the Calculator class. ... ERROR
 
 ======================================================================
-ERROR: test_addition (labs.classes.Lab6.CalculatorTest.CalculatorArithmeticTester)
+ERROR: test_addition (labs.classes.Lab6.calculator_test.CalculatorArithmeticTester)
 Test the addition functionality of the Calculator class.
 ----------------------------------------------------------------------
 Traceback (most recent call last):
-  File "/Users/olegkuzo/Desktop/політех/2Курс/СМП/SPLLabs/Labs/labs/classes/Lab6/CalculatorTest.py", line 14, in setUp
+  File "/Users/olegkuzo/Desktop/політех/2Курс/СМП/SPLLabs/Labs/labs/classes/Lab6/calculator_test.py", line 14, in setUp
     self.calculator = Calculator.Calculator()
 AttributeError: type object 'Calculator' has no attribute 'Calculator'
 
 ======================================================================
-ERROR: test_division (labs.classes.Lab6.CalculatorTest.CalculatorArithmeticTester)
+ERROR: test_division (labs.classes.Lab6.calculator_test.CalculatorArithmeticTester)
 Test the division functionality of the Calculator class.
 ----------------------------------------------------------------------
 Traceback (most recent call last):
-  File "/Users/olegkuzo/Desktop/політех/2Курс/СМП/SPLLabs/Labs/labs/classes/Lab6/CalculatorTest.py", line 14, in setUp
+  File "/Users/olegkuzo/Desktop/політех/2Курс/СМП/SPLLabs/Labs/labs/classes/Lab6/calculator_test.py", line 14, in setUp
     self.calculator = Calculator.Calculator()
 AttributeError: type object 'Calculator' has no attribute 'Calculator'
 
 ======================================================================
-ERROR: test_multiplication (labs.classes.Lab6.CalculatorTest.CalculatorArithmeticTester)
+ERROR: test_multiplication (labs.classes.Lab6.calculator_test.CalculatorArithmeticTester)
 Test the multiplication functionality of the Calculator class.
 ----------------------------------------------------------------------
 Traceback (most recent call last):
-  File "/Users/olegkuzo/Desktop/політех/2Курс/СМП/SPLLabs/Labs/labs/classes/Lab6/CalculatorTest.py", line 14, in setUp
+  File "/Users/olegkuzo/Desktop/політех/2Курс/СМП/SPLLabs/Labs/labs/classes/Lab6/calculator_test.py", line 14, in setUp
     self.calculator = Calculator.Calculator()
 AttributeError: type object 'Calculator' has no attribute 'Calculator'
 
 ======================================================================
-ERROR: test_subtraction (labs.classes.Lab6.CalculatorTest.CalculatorArithmeticTester)
+ERROR: test_subtraction (labs.classes.Lab6.calculator_test.CalculatorArithmeticTester)
 Test the subtraction functionality of the Calculator class.
 ----------------------------------------------------------------------
 Traceback (most recent call last):
-  File "/Users/olegkuzo/Desktop/політех/2Курс/СМП/SPLLabs/Labs/labs/classes/Lab6/CalculatorTest.py", line 14, in setUp
+  File "/Users/olegkuzo/Desktop/політех/2Курс/СМП/SPLLabs/Labs/labs/classes/Lab6/calculator_test.py", line 14, in setUp
     self.calculator = Calculator.Calculator()
 AttributeError: type object 'Calculator' has no attribute 'Calculator'
 
 ----------------------------------------------------------------------
-Ran 4 tests in 0.002s
+Ran 4 tests in 0.003s
 
 FAILED (errors=4)

@@ -6,7 +6,7 @@ from colorama import Fore
 from labs.classes.Lab7.display_dog_api import DisplayDogApi
 from datetime import datetime
 
-log_file_path = "/Users/olegkuzo/Desktop/політех/2Курс/СМП/SPLLabs/Labs/labs/Data/logger/logger.log"
+log_file_path = "/Labs/labs/Data/logger/logger.log"
 
 class SaveInFormat:
     """
