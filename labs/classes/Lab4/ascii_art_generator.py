@@ -1,13 +1,13 @@
 from colorama import Fore, Style
 from labs.classes.Lab4.fonts import *  # Assuming the necessary fonts are defined in the 'fonts' module
-from labs.Shared.saveASCIIArt.save_ascii_name import SaveAscii
+from labs.Shared.saveASCIIArt.save_ascii_name import save_ascii
 
 class AsciiArtGenerator:
     """
     A class for generating and saving ASCII art with color options.
     """
 
-    DataPath = '/Labs/labs/Data/Lab4/'
+    DataPath = '/Users/olegkuzo/Desktop/політех/2Курс/СМП/SPLLabs/Labs/labs/Data/Lab4/'
 
     def __init__(self):
         """
@@ -25,7 +25,7 @@ class AsciiArtGenerator:
         self.colors = [Fore.BLACK, Fore.RED, Fore.BLUE, Fore.YELLOW]
 
         # Instance of the save_ascii class for handling ASCII art saving
-        self.save_ascii_handler = SaveAscii()
+        self.save_ascii_handler = save_ascii()
 
     def generate_ascii_art(self, text: str, font_choice: int, color_choice: int) -> str:
         """

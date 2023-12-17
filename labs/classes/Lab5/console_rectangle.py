@@ -1,5 +1,4 @@
 from labs.classes.Lab5.rectangle import Rectangle
-import os
 
 class ConsoleRectangle(Rectangle):
     """
@@ -67,23 +66,18 @@ class ConsoleRectangle(Rectangle):
             self._zoom = int(input("Input zoom: "))
             self.set_zoom()
 
-    def save_object(self, file_path):
+    def save_object(self, obj, filename):
         """
         Save the object to a text file.
 
-        :param file_path: The complete file path for the saved object.
+        :param obj: The object to save.
+        :param filename: The filename for the saved object.
         """
         try:
-            with open(file_path, 'w') as file:
-                file.write(f"size_x: {self.size_x}\n")
-                file.write(f"size_y: {self.size_y}\n")
-                file.write(f"size_z: {self.size_z}\n")
-                file.write(f"_color_1: {self._color_1}\n")
-                file.write(f"_color_2: {self._color_2}\n")
-                file.write(f"_color_3: {self._color_3}\n")
-                # Add more lines for other attributes as needed
-
-            print(f"Object saved successfully to {file_path}")
+            with open(f"{filename}.txt", 'w') as file:
+                for line in obj:
+                    file.write(str(line) + "\n")
+            print(f"Object saved successfully to {filename}.txt")
         except Exception as e:
             print(f"Error occurred while saving: {e}")
 

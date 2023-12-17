@@ -1,6 +1,0 @@
-size_x: 14
-size_y: 14
-size_z: 14
-_color_1: [44m
-_color_2: [42m
-_color_3: [43m

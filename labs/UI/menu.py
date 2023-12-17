@@ -78,7 +78,7 @@ class Main:
             elif user_choice == '4':
                 import labs.UI.Menu_Builder.Lab4.lab_menu4 as menu4
                 import labs.classes.Lab4.ascii_art_generator
-                ascii_generator = labs.classes.Lab4.ascii_art_generator.AsciiArtGenerator()
+                ascii_generator = labs.classes.Lab4.ASCIIArtGenerator.AsciiArtGenerator()
                 ascii = menu4.LabMenu4(ascii_generator)
                 ascii.run()
 

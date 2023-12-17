@@ -1,6 +1,6 @@
 import unittest
 from unittest.mock import patch, MagicMock
-from labs.classes.Lab7.display_dog_api import DisplayDogApi
+from display_dog_api import DisplayDogApi
 from labs.UI.Menu_Builder.Lab7.lab_menu7 import MenuLab7
 
 class TestDisplayDogApi(unittest.TestCase):
